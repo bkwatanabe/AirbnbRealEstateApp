@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory
+import sys
 
 
 # Flask app config
@@ -11,8 +12,8 @@ app.config['CSS'] = "css"
 # Routing for homepage, static files, and the uploader
 @app.route('/', methods=["GET"])
 def homepage():
-    return render_template('index.html')
-
+    base_url = request.base_url
+    return render_template('index.html', base_url = base_url)
 
 @app.route('/js/<path:path>', methods=["GET"])
 def get_send_js(path):
@@ -31,14 +32,11 @@ def get_nyc():
     return send_from_directory(app.config['STATIC'], "nyc.json")
 
 
-# Endpoint for uploading files
-# Accepts files if it has an allowed extension
-# Else raises an error
-@app.route('/model/<path:path>', methods=["GET"])
-def get_model(path):
-    print(path)
-    return path
-
+# Stub for running models
+# @app.route('/model/<path:path>', methods=["GET"])
+# def get_model(path):
+#     print(path)
+#     return path
 
 if __name__ == '__main__':
     app.run()

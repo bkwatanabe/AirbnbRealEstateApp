@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Airbnb Real Estate</title>
-    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="js/d3.min.js" type="text/javascript"></script>
+    <script src={{ base_url + "js/jquery-3.4.1.min.js"}} type="text/javascript"></script>
+{#    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>#}
+    <script src={{ base_url + "js/d3.min.js"}} type="text/javascript"></script>
 {#    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>#}
 {#    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />#}
-    <script src='js/mapbox-gl.js'></script>
-    <link href='css/mapbox-gl.css' rel='stylesheet' />
-    <link href='css/bootstrap.css' rel='stylesheet' />
+    <script src={{ base_url + 'js/mapbox-gl.js'}}></script>
+    <link href={{ base_url + 'css/mapbox-gl.css'}} rel='stylesheet' />
+    <link href={{ base_url + 'css/bootstrap.css'}} rel='stylesheet' />
     <style>
         path {
 
@@ -53,6 +54,6 @@
 {# Log success/failure messages for users #}
 <div id="log"></div>
 
-<script src="js/index.js" type="text/javascript"></script>
+<script src={{ base_url + "js/index.js"}} type="text/javascript"></script>
 </body>
 </html>
