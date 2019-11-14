@@ -29,7 +29,7 @@ $("form").submit(function (event) {
 });
 
 // $.get("nyc.json").then(function(nyc){
-d3.json("nyc.json").then(function(nyc) {
+d3.json(window.location.href + "/static/nyc.json").then(function(nyc) {
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFuazc2NSIsImEiOiJjazJ5ZHNndDgwNzI0M2JxdGZpaHh6OTFyIn0.NbINRMNm2chbLryFxoWCtg';
 map = new mapboxgl.Map({
