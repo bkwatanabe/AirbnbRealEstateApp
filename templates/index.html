@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airbnb Real Estate</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/d3.min.js" type="text/javascript"></script>
+{#    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>#}
+{#    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />#}
+    <script src='js/mapbox-gl.js'></script>
+    <link href='css/mapbox-gl.css' rel='stylesheet' />
+    <link href='css/bootstrap.css' rel='stylesheet' />
+    <style>
+        path {
+
+          stroke: #fff;
+          stroke-width: .5;
+          stroke-dasharray: 1;
+          fill: #afafaf;
+
+        }
+
+        #neighborhoodPopover {
+          position: absolute;
+          text-align: center;
+          padding: 2px;
+          font: 12px sans-serif;
+          background: #fff;
+          border: 0px;
+          border-radius: 8px;
+          pointer-events: none;
+          opacity: 0;
+        }
+        #map {
+            height: 420px;
+            width: 600px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            z-index: 0
+        }
+    </style>
+</head>
+<body>
+<h1>Airbnb Real Estate</h1>
+<div id='neighborhoodPopover'> </div>
+<div id="map"></div>
+{#<form>#}
+{#    <label about="meow">Meow</label>#}
+{#    <input type = "text" name = "meow" id="input" required/>#}
+{#    <input type = "submit"/>#}
+{#</form>#}
+
+{# Log success/failure messages for users #}
+<div id="log"></div>
+
+<script src="js/index.js" type="text/javascript"></script>
+</body>
+</html>
