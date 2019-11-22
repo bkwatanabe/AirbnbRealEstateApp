@@ -1,0 +1,27 @@
+path {
+
+  stroke: #fff;
+  stroke-width: .5;
+  stroke-dasharray: 1;
+  fill: #afafaf;
+
+}
+
+#neighborhoodPopover {
+  position: absolute;
+  text-align: center;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: #fff;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+}
+#map {
+    height: 420px;
+    width: 600px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    z-index: 0
+}

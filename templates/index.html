@@ -4,42 +4,15 @@
     <meta charset="UTF-8">
     <title>Airbnb Real Estate</title>
     <script src={{ base_url + "js/jquery-3.4.1.min.js"}} type="text/javascript"></script>
-{#    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>#}
     <script src={{ base_url + "js/d3.min.js"}} type="text/javascript"></script>
 {#    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>#}
 {#    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />#}
     <script src={{ base_url + 'js/mapbox-gl.js'}}></script>
-    <link href={{ base_url + 'css/mapbox-gl.css'}} rel='stylesheet' />
-    <link href={{ base_url + 'css/bootstrap.css'}} rel='stylesheet' />
-    <style>
-        path {
+    <link rel='stylesheet' href={{ base_url + 'css/mapbox-gl.css'}} />
+    <link rel='stylesheet' href={{ base_url + 'css/bootstrap.css'}} />
+    <link rel='stylesheet' href={{ base_url + 'css/index.css'}}/>
+    <link rel="icon" type="image/png" href={{ base_url + 'static/favicon.ico' }}>
 
-          stroke: #fff;
-          stroke-width: .5;
-          stroke-dasharray: 1;
-          fill: #afafaf;
-
-        }
-
-        #neighborhoodPopover {
-          position: absolute;
-          text-align: center;
-          padding: 2px;
-          font: 12px sans-serif;
-          background: #fff;
-          border: 0px;
-          border-radius: 8px;
-          pointer-events: none;
-          opacity: 0;
-        }
-        #map {
-            height: 420px;
-            width: 600px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            z-index: 0
-        }
-    </style>
 </head>
 <body>
 <h1>Airbnb Real Estate</h1>

@@ -23,13 +23,9 @@ def get_send_js(path):
 def get_send_css(path):
     return send_from_directory(app.config['CSS'], path)
 
-@app.route('/favicon.ico', methods=["GET"])
-def get_favicon():
-    return send_from_directory(app.config['STATIC'], "favicon.ico")
-
-@app.route('/nyc.json', methods=["GET"])
-def get_nyc():
-    return send_from_directory(app.config['STATIC'], "nyc.json")
+@app.route('/static/<path:path>', methods=["GET"])
+def get_static(path):
+    return send_from_directory(app.config['STATIC'], path)
 
 
 # Stub for running models
