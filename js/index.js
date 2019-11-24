@@ -4,8 +4,12 @@ const width = height * 1.25;
 const log = $("#log");
 const input = $("#input");
 const neighborhoodPopover = $("#neighborhoodPopover");
+const neighborhoodChart = $("#neighborhoodChart");
 
 const baseURL = calcBaseURL();
+var flag = 0
+
+
 
 // Whenever this form has a submit event,
 // $("form").submit(function (event) {
@@ -34,12 +38,15 @@ const baseURL = calcBaseURL();
 // Load nyc geojson and profit dictionary
 Promise.all([
     d3.json(baseURL + "/static/nyc.json"),
-    d3.json(baseURL + "/static/just_profit_dict.json")
-]).then(function([nyc, profit]){
+    d3.json(baseURL + "/static/just_profit_dict.json"),
+    d3.json(baseURL + "/static/forecasts.json")
+
+]).then(function([nyc, profit, forecasts]){
 
     // add profit attribute to each feature
     nyc.features.forEach(function(d){
         d.properties.profit = profit[d.properties.neighborhood];
+        d.properties.forecasts = forecasts[d.properties.neighborhood];
     });
 
     // hardcoded for now, but can be changed later
@@ -123,9 +130,82 @@ Promise.all([
         neighborhoodPopover.css("opacity", 0);
     });
 
+    map.on("click", "neighborhoods", function (e) {
+        console.log(e.features[0].properties)
+        if (flag == 0) {
+            makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
+            flag = 1
+        } else {
+            d3.select("#svg").remove();
+            makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
+
+             // updateLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
+
+        }
+    });
+
 });
 
+
+
 // Helper functions
+function makeLineChart(neighborhood, dict){
+    var svg = d3.select("#neighborhoodChart")
+      .append("svg")
+        .attr("width", width - 400)
+        .attr("height", height )
+        .attr("id", "svg")
+      .append("g")
+        .attr("transform",
+              "translate(" + 10 + "," + 0 + ")");
+    var data = [];
+    var dataSeries = { type: "line" };
+    var dataPoints = [];
+    dict = JSON.parse(dict);
+    var combined_data = dict.historical_prices.concat(dict.forecast_prices)
+    var year = 1996
+    var month = 0
+    for (var i=0; i < combined_data.length; i++){
+        dataPoints.push({
+            date: new Date(year, month, 1),
+            forecast:combined_data[i]
+        });
+        month += 1;
+        if (month > 12){
+            month = 1;
+            year += 1;
+        }
+    }
+    dataSeries.dataPoints = dataPoints;
+    data.push(dataSeries);
+
+    var x = d3.scaleTime()
+      .domain(d3.extent(dataPoints, function(d) { return d.date; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(100," + height + ")")
+      .attr("class", "x_axis")
+      .call(d3.axisBottom(x));
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain([d3.min(dataPoints, function(d) { return +d.forecast; }), d3.max(dataPoints, function(d) { return +d.forecast; })])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .attr("class", "y_axis")
+      .call(d3.axisLeft(y));
+    svg.append("path")
+      .datum(dataPoints)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("class", "line")
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.forecast) })
+        )
+
+}
+
 function formatMoney(num){
     var prefix = "$";
     var strNum = num.toString();

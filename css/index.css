@@ -7,6 +7,12 @@ path {
 
 }
 
+.line {
+    fill: none;
+    stroke: #ffab99;
+    stroke-width: 3;
+}
+
 #neighborhoodPopover {
   position: absolute;
   text-align: center;
