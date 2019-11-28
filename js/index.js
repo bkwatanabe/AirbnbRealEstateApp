@@ -1,5 +1,6 @@
-const height = 720;
+const height = 360;
 const width = height * 1.25;
+const margin = {top: "20px", bottom: "20px", left: "20px", right: "0px"}
 
 const log = $("#log");
 const input = $("#input");
@@ -7,7 +8,7 @@ const neighborhoodPopover = $("#neighborhoodPopover");
 const neighborhoodChart = $("#neighborhoodChart");
 
 const baseURL = calcBaseURL();
-var flag = 0
+// var flag = 0
 
 
 
@@ -116,6 +117,9 @@ Promise.all([
     // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
     // https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/
 
+    // Show Upper West Side by default
+    makeLineChart("Upper West Side", JSON.stringify(forecasts["Upper West Side"]));
+
     // Handles tooltip behavior
     map.on("mousemove", "neighborhoods", function (e) {
         let tooltip = buildToolTip(e.features[0].properties.neighborhood, e.features[0].properties.profit);
@@ -132,27 +136,20 @@ Promise.all([
 
     map.on("click", "neighborhoods", function (e) {
         console.log(e.features[0].properties)
-        if (flag == 0) {
-            makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
-            flag = 1
-        } else {
-            d3.select("#svg").remove();
-            makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
 
-             // updateLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
+        d3.select("#svg").remove();
+        makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
 
-        }
     });
 
 });
-
 
 
 // Helper functions
 function makeLineChart(neighborhood, dict){
     var svg = d3.select("#neighborhoodChart")
       .append("svg")
-        .attr("width", width - 400)
+        .attr("width", width)
         .attr("height", height )
         .attr("id", "svg")
       .append("g")
