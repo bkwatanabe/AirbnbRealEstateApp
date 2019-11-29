@@ -40,14 +40,19 @@ const baseURL = calcBaseURL();
 Promise.all([
     d3.json(baseURL + "/static/nyc.json"),
     d3.json(baseURL + "/static/just_profit_dict.json"),
-    d3.json(baseURL + "/static/forecasts.json")
+    d3.json(baseURL + "/static/forecasts.json"),
+    d3.json(baseURL + "/static/agg_data_nbhood.json")
 
-]).then(function([nyc, profit, forecasts]){
+
+
+]).then(function([nyc, profit, forecasts, agg_nbhood]){
 
     // add profit attribute to each feature
     nyc.features.forEach(function(d){
         d.properties.profit = profit[d.properties.neighborhood];
         d.properties.forecasts = forecasts[d.properties.neighborhood];
+        d.properties.agg = agg_nbhood[d.properties.neighborhood];
+
     });
 
     // hardcoded for now, but can be changed later
@@ -119,6 +124,7 @@ Promise.all([
 
     // Show Upper West Side by default
     makeLineChart("Upper West Side", JSON.stringify(forecasts["Upper West Side"]));
+    var table = agg_nbhood_info("Upper West Side", JSON.stringify(agg_nbhood["Upper West Side"]));
 
     // Handles tooltip behavior
     map.on("mousemove", "neighborhoods", function (e) {
@@ -138,6 +144,8 @@ Promise.all([
         console.log(e.features[0].properties)
 
         d3.select("#svg").remove();
+        d3.select("#table").remove();
+        var table = agg_nbhood_info(e.features[0].properties.neighborhood, e.features[0].properties.agg)
         makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
 
     });
@@ -146,15 +154,68 @@ Promise.all([
 
 
 // Helper functions
+
+function agg_nbhood_info(neighborhood, dict){
+    dict = JSON.parse(dict);
+    console.log(dict);
+    var table = d3.select("#agg-data").append("table")
+            .attr("style", "margin-left: 0px")
+            .attr("style", "font-size: 6.5px")
+
+            .attr("id", "table");
+    var thead = table.append("thead");
+    var tbody = table.append("tbody");
+    var columns = ['near_landmarks', 'near_subways', 'most_recent', 'availability_365', 'calculated_host_listings_count', 'minimum_nights', 'price']
+    // append the header row
+    data = Object.keys(dict).map(function(k) { return {key:k, value:dict[k]} })
+    thead.append("tr")
+        .selectAll("th")
+        .data(['Attribute', 'Average Value'])
+        .enter()
+        .append("th")
+            .text(function(column) { return column; });
+
+    // create a row for each object in the data
+    var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append('tr');
+    rows.append("td")
+    .text(function(d) { ;return d.key; });
+
+    rows
+    .append("td")
+    .append("input")
+    .attr('readonly', true)
+    .attr("name", "byName")
+    .attr("type", "text")
+    .attr("value",function(d) { return Math.round(d.value); });
+
+    // create a cell in each row for each column
+    // var cells = rows.selectAll("td")
+    //     .data(function(row) {
+    //         return columns.map(function(column) {
+    //             console.log(row[column]);
+    //             return {column: column, value: row[column]};
+    //         });
+    //     })
+    //     .enter()
+    //     .append("td")
+    //     .attr("style", "font-family: Courier") // sets the font style
+    //         .html(function(d) { return d.value; });
+    
+    return table;
+
+}
 function makeLineChart(neighborhood, dict){
     var svg = d3.select("#neighborhoodChart")
       .append("svg")
-        .attr("width", width)
-        .attr("height", height )
+        .attr("width", width + 300)
+        .attr("height", height + 50)
         .attr("id", "svg")
       .append("g")
         .attr("transform",
-              "translate(" + 10 + "," + 0 + ")");
+              "translate(" + 60 + "," + 30 + ")");
     var data = [];
     var dataSeries = { type: "line" };
     var dataPoints = [];
@@ -180,15 +241,16 @@ function makeLineChart(neighborhood, dict){
       .domain(d3.extent(dataPoints, function(d) { return d.date; }))
       .range([ 0, width ]);
     svg.append("g")
-      .attr("transform", "translate(100," + height + ")")
+      .attr("transform", "translate(-100," + height - 100 + ")")
       .attr("class", "x_axis")
-      .call(d3.axisBottom(x));
+      .call(d3.axisTop(x));
     // Add Y axis
     var y = d3.scaleLinear()
       .domain([d3.min(dataPoints, function(d) { return +d.forecast; }), d3.max(dataPoints, function(d) { return +d.forecast; })])
       .range([ height, 0 ]);
     svg.append("g")
       .attr("class", "y_axis")
+      .attr("transform", "translate(500, " + height - 500 + ")")
       .call(d3.axisLeft(y));
     svg.append("path")
       .datum(dataPoints)
