@@ -16,39 +16,53 @@
 </head>
 <body>
     <div class="container">
-    <div class="row">
-        <div class="col-12 text-center">
-            Airbnb Real Estate
-        </div>
-    </div>
-    <div id="content" class="row">
-        <div id="left-hand-content" class="col-6">
-            <div id="instructions" class="row">Click on a neighborhood for more information</div>
-            <div class="row">
-                <div id="map"></div>
-            </div>
-            <div class="row">Put legend here</div>
-        </div>
-        <div id="right-hand-content" class="col-6">
-            <div id="neighborhoodChart" class="row"> </div>
-            <div class="row">
-                <div id="agg-data" class="col-4">
+{#        <div class="row">#}
+{#            <div class="col-12 text-center">#}
+{#                Airbnb Real Estate#}
+{#            </div>#}
+{#        </div>#}
+        <div id="content" class="row mt-4">
+            <div id="left-hand-content" class="col-6">
+                <div id="map-header" class="row mb-2">
+                    Welcome to the Airbnb Real Estate App!
+                    Use this tool to inform your next NYC real estate purchase decision.
+                    This app will show you which neighborhoods you can buy a house in to make a profit with Airbnb.
+                    Click on a neighborhood for more information.
                 </div>
-                <div id="borough-chart" class="col-8">
-                    <p>Put borough chart here</p>
+                <div class="row">
+                    <div id="map"></div>
+                </div>
+                <div class="row">
+                    <div id="legend" class="col-6">
+                    </div>
+                    <div class="offset-1 col-5">
+                        <label for="year" style="font-size: 0.8rem">Months in the future: </label>
+                        <select name="year">
+                            <option>12</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+            <div id="right-hand-content" class="col-6">
+                <div id="neighborhoodChart" class="row"> </div>
+                <div class="row">
+                    <div id="agg-data" class="col-4">
+                    </div>
+                    <div id="borough-chart" class="col-8">
+                        <p>Put borough chart here</p>
+                    </div>
+                </div>
+            </div>
+
+        {#<form>#}
+        {#    <label about="meow">Meow</label>#}
+        {#    <input type = "text" name = "meow" id="input" required/>#}
+        {#    <input type = "submit"/>#}
+        {#</form>#}
+
+        {# Log success/failure messages for users #}
+            <div id="log"></div>
         </div>
-
-    {#<form>#}
-    {#    <label about="meow">Meow</label>#}
-    {#    <input type = "text" name = "meow" id="input" required/>#}
-    {#    <input type = "submit"/>#}
-    {#</form>#}
-
-    {# Log success/failure messages for users #}
-        <div id="log"></div>
-    </div>
     </div>
 
     <div id='neighborhoodPopover'> </div>

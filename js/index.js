@@ -6,6 +6,7 @@ const log = $("#log");
 const input = $("#input");
 const neighborhoodPopover = $("#neighborhoodPopover");
 const neighborhoodChart = $("#neighborhoodChart");
+const mapLegendDiv = $("#legend");
 
 const baseURL = calcBaseURL();
 // var flag = 0
@@ -70,7 +71,7 @@ Promise.all([
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFuazc2NSIsImEiOiJjazJ5ZHNndDgwNzI0M2JxdGZpaHh6OTFyIn0.NbINRMNm2chbLryFxoWCtg';
     map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
+        style: 'mapbox://styles/mapbox/light-v10',
         center: [-74.0060, 40.7108],
         zoom: 9,
         minZoom: 9,
@@ -80,6 +81,8 @@ Promise.all([
             new mapboxgl.LngLat(-73.59401269531324, 40.92904478186287)
         )
     });
+
+    makeMapLegend(minProfit, maxProfit);
 
     // adds zoom widget
     map.addControl(new mapboxgl.NavigationControl());
@@ -292,4 +295,75 @@ function calcBaseURL(){
         result = result.substr(0, result.length - 1);
     }
     return result;
+}
+
+function makeMapLegend(minProfit, maxProfit){
+    let svg = d3.select("#legend").append("svg");
+    svg.attr("width", "100%")
+        .attr("height", "50px")
+        .attr("id", "map-legend");
+
+    let defs = svg.append("defs");
+    let linearGradient = defs.append("linearGradient")
+        .attr("id", "linear-gradient");
+
+    linearGradient
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "0%");
+
+    // Assumes that there are both negative and positive profits. Update if that ever changes.
+    let middleOffset = (-1*minProfit/(maxProfit - minProfit)*100).toFixed(4).toString() + "%";
+
+    console.log(middleOffset);
+
+    //Set the color for the start (0%)
+    linearGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#D2222D");
+
+    //Set the color for the end (50%)
+    linearGradient.append("stop")
+        .attr("offset", middleOffset)
+        .attr("stop-color", "#FFE599");
+
+    //Set the color for the end (100%)
+    linearGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#007000");
+
+    svg.append("rect")
+        .attr("width", "200px")
+        .attr("height", "10px")
+        .style("fill", "url(#linear-gradient)")
+        .style("fill-opacity", 0.90)
+        .attr("transform", "translate(20,20)");
+
+    // legend title
+    svg.append("text")
+        .attr("class", "legendTitle")
+        .attr("x", 120)
+        .attr("y", 10)
+        .style("text-anchor", "middle")
+        .text("Expected Profit ($)")
+        .style("font-size", "0.8rem");
+
+    //Set scale for x-axis
+    var xScale = d3.scaleLinear()
+         .range([0, 200])
+         .domain([ minProfit, maxProfit] );
+
+    //Define x-axis
+    var xAxis = d3.axisBottom(xScale)
+          // .ticks(5)
+        .tickValues([minProfit, 0, maxProfit])
+          //.tickFormat(formatPercent)
+          .scale(xScale);
+
+    //Set up X axis
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(20,25)")
+        .call(xAxis);
 }
