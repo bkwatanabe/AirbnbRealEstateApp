@@ -1,6 +1,6 @@
 const height = 360;
 const width = height * 1.25;
-const margin = {top: "20px", bottom: "20px", left: "20px", right: "0px"}
+const margin = {top: 50, bottom: 80, left: 100, right: 20}
 
 const log = $("#log");
 const input = $("#input");
@@ -9,7 +9,6 @@ const neighborhoodChart = $("#neighborhoodChart");
 const mapLegendDiv = $("#legend");
 
 const baseURL = calcBaseURL();
-// var flag = 0
 
 
 
@@ -213,12 +212,10 @@ function agg_nbhood_info(neighborhood, dict){
 function makeLineChart(neighborhood, dict){
     var svg = d3.select("#neighborhoodChart")
       .append("svg")
-        .attr("width", width + 300)
-        .attr("height", height + 50)
-        .attr("id", "svg")
-      .append("g")
-        .attr("transform",
-              "translate(" + 60 + "," + 30 + ")");
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("id", "svg");
+
     var data = [];
     var dataSeries = { type: "line" };
     var dataPoints = [];
@@ -237,34 +234,65 @@ function makeLineChart(neighborhood, dict){
             year += 1;
         }
     }
+
     dataSeries.dataPoints = dataPoints;
     data.push(dataSeries);
 
+    // Line Chart Title
+    svg.append("text")
+				.attr("class", "title")
+				.text(neighborhood + " Housing Prices (1996 - 2024)")
+				.attr("text-anchor", "middle")
+				.attr("x", (width/2 + margin.left))
+				.attr("y", margin.top/2)
+				.attr("font-size", "18px");
+
+    // Add X axis
     var x = d3.scaleTime()
-      .domain(d3.extent(dataPoints, function(d) { return d.date; }))
+      .domain(d3.extent(dataPoints, function(d) { console.log(d.date); return d.date; }))
       .range([ 0, width ]);
+
     svg.append("g")
-      .attr("transform", "translate(-100," + height - 100 + ")")
+      .attr("transform", "translate(" + margin.left + "," + (height + margin.top) + ")")
       .attr("class", "x_axis")
-      .call(d3.axisTop(x));
+      .call(d3.axisBottom(x));
+
+    svg.append("text")
+        .text("Year")
+        .attr("text-anchor", "middle")
+        .attr("x", margin.left + width/2)
+        .attr("y", margin.top + height + margin.bottom/2)
+        .attr("font-size", "0.8rem");
+
     // Add Y axis
     var y = d3.scaleLinear()
       .domain([d3.min(dataPoints, function(d) { return +d.forecast; }), d3.max(dataPoints, function(d) { return +d.forecast; })])
       .range([ height, 0 ]);
     svg.append("g")
       .attr("class", "y_axis")
-      .attr("transform", "translate(500, " + height - 500 + ")")
+      .attr("transform", "translate("+ margin.left +", " + margin.top + ")")
       .call(d3.axisLeft(y));
+
+    // Y axis label
+    svg.append("text")
+        .text("Price ($)")
+        .attr("text-anchor", "middle")
+        .attr("y", margin.left/3)
+        .attr("x", -(margin.top + height/2))
+        .attr("font-size", "0.8rem")
+        .attr("transform", "rotate(-90)");
+
+    // Plot line
     svg.append("path")
       .datum(dataPoints)
-      .attr("fill", "none")
+      .attr("fill", "steelblue")
       .attr("stroke", "steelblue")
       .attr("stroke-width", 1.5)
       .attr("class", "line")
       .attr("d", d3.line()
-        .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.forecast) })
-        )
+        .x(function(d) { return x(d.date) + margin.left })
+        .y(function(d) { return y(d.forecast) + margin.top })
+        );
 
 }
 
