@@ -172,18 +172,18 @@ function borough_graph() {
 
 var x = d3.scaleBand()
   .domain(['Bronx', 'Manhattan', 'Staten Island', 'Queens', 'Brooklyn'])
-  .range([0, 325])
+  .range([0, 300])
   .padding(0.1)
 var y = d3.scaleLinear()
   .domain([0, d3.max(stack, function(d) {  return d3.max(d, function(d) { return d[1]; });  })])
-  .range([150, 0]);
+  .range([100, 0]);
 
 var colors = ["b33040", "#d25c4d"];
 
 var svg = d3.select("#borough-chart")
       .append("svg")
         .attr("width", 0 + 400)
-        .attr("height", 0 + 200)
+        .attr("height", 0 + 250)
         .attr("id", "svg")
       .append("g")
         .attr("transform",
@@ -198,14 +198,33 @@ var xAxis = d3.axisBottom()
 svg.append("g")
   .attr("class", "y axis")
   .attr("transform",
-              "translate(" + 50 + "," + 0 + ")")
-  .call(yAxis);
+              "translate(" + 60 + "," + 30 + ")")
+  .call(yAxis)
 
 svg.append("g")
   .attr("class", "x axis")
   .attr("transform",
-              "translate(" + 50 + "," + 130 + ")")  
+              "translate(" + 60 + "," + 130 + ")")  
+  .style("fill", "#000")
   .call(xAxis);
+
+svg.append("text")
+                .attr("class", "title")
+                .text("Borough Profits")
+                .attr("text-anchor", "middle")
+                .attr("x", 200)
+                .attr("y", 10)
+                .attr("font-size", "8px");
+svg.append("text")
+        .attr("class", "title")
+        .text("Profit($)")
+        .attr("text-anchor", "middle")
+
+        .attr("x", -70)
+        .attr("y", 10)
+
+        .attr("font-size", "10px")
+        .attr("transform", "rotate(-90)");
 
 
 // Create groups for each series, rects for each segment 
@@ -219,8 +238,8 @@ var rect = groups.selectAll("rect")
   .data(function(d) { return d; })
   .enter()
   .append("rect")
-  .attr("x", function(d) { return x(d.data.borough) + 70; })
-  .attr("y", function(d) { console.log(d[0],  d[1]);return 0+ y(d[1]); })
+  .attr("x", function(d) { return x(d.data.borough) + 77; })
+  .attr("y", function(d) { console.log(d[0],  d[1]);return 30+ y(d[1]); })
   .attr("height", function(d) {  return y(d[0]) - y(d[1]); })
   .attr("width", 20);
   // .on("mouseover", function() { tooltip.style("display", null); })
@@ -239,18 +258,20 @@ var legend = svg.selectAll(".legend")
   .data(colors)
   .enter().append("g")
   .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(30," + i * 19 + ")"; });
+  .attr("transform", function(d, i) { return "translate(30," + i * 10 + ")"; });
  
 legend.append("rect")
-  .attr("x", width - 18)
-  .attr("width", 18)
-  .attr("height", 18)
+  .attr("x", 268)
+  .attr("width", 8)
+  .attr("height", 8)
   .style("fill", function(d, i) {return colors.slice()[i];});
  
 legend.append("text")
-  .attr("x", width + 5)
-  .attr("y", 9)
-  .attr("dy", ".35em")
+  .attr("x",  280)
+  .attr("y", 6)
+  .attr("dy", "1px")
+  .attr("font-size", "8px")
+
   .style("text-anchor", "start")
   .text(function(d, i) { 
     switch (i) {
@@ -258,6 +279,8 @@ legend.append("text")
       case 1: return "Airbnb";
     }
   });
+
+  
 }
 
 function agg_nbhood_info(neighborhood, dict){
@@ -467,6 +490,7 @@ function makeMapLegend(minProfit, maxProfit){
         .attr("height", "10px")
         .style("fill", "url(#linear-gradient)")
         .style("fill-opacity", 0.90)
+
         .attr("transform", "translate(20,20)");
 
     // legend title
@@ -494,5 +518,6 @@ function makeMapLegend(minProfit, maxProfit){
     svg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(20,25)")
+        .attr('stroke-width', 0)
         .call(xAxis);
 }

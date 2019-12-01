@@ -25,5 +25,5 @@
 
 .axis path, .axis tick, .axis line {
     fill: none;
-    stroke: none;
+    stroke: #000;
 }
