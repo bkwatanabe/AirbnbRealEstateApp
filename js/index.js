@@ -1,4 +1,4 @@
-const height = 360;
+const height = 320;
 const width = height * 1.25;
 const margin = {top: 50, bottom: 80, left: 100, right: 20}
 
@@ -97,25 +97,23 @@ Promise.all([
             },
             'layout': {},
             'paint': {
-                // 'fill-color': '#B0DE5C',
                 'fill-color': [
-                    'interpolate',
+                    'case',
+                    ["==", ['get', 'profit'], null],
+                    "#a5aeaf",
+                    ['interpolate',
                     ['linear'],
                     ['get', 'profit'],
-                    // minProfit, "#d73027",
-                    // minProfit + colorScale_section_size, "#f46d43",
-                    // minProfit + colorScale_section_size * 2, "#fdae61",
-                    // minProfit + colorScale_section_size * 3, "#fee08b",
-                    // minProfit + colorScale_section_size * 4, "#ffffbf",
-                    // minProfit + colorScale_section_size * 5, "#d9ef8b",
-                    // minProfit + colorScale_section_size * 6, "#a6d96a",
-                    // minProfit + colorScale_section_size * 7, "#66bd63",
-                    // maxProfit, "#1a9850"
                     minProfit, "#D2222D",
                     0, "#FFE599",
-                    maxProfit, "#007000"
+                    maxProfit, "#007000"]
                 ],
-                'fill-opacity': 0.80,
+                'fill-opacity': [
+                    'case',
+                    ["==", ['get', 'profit'], null],
+                    0.6,
+                    0.8
+                ],
                 'fill-outline-color': '#000'
             }
         });
@@ -143,8 +141,6 @@ Promise.all([
     });
 
     map.on("click", "neighborhoods", function (e) {
-        console.log(e.features[0].properties)
-
         d3.select("#svg").remove();
         d3.select("#table").remove();
         var table = agg_nbhood_info(e.features[0].properties.neighborhood, e.features[0].properties.agg)
@@ -249,7 +245,7 @@ function makeLineChart(neighborhood, dict){
 
     // Add X axis
     var x = d3.scaleTime()
-      .domain(d3.extent(dataPoints, function(d) { console.log(d.date); return d.date; }))
+      .domain(d3.extent(dataPoints, function(d) { return d.date; }))
       .range([ 0, width ]);
 
     svg.append("g")
@@ -343,8 +339,6 @@ function makeMapLegend(minProfit, maxProfit){
 
     // Assumes that there are both negative and positive profits. Update if that ever changes.
     let middleOffset = (-1*minProfit/(maxProfit - minProfit)*100).toFixed(4).toString() + "%";
-
-    console.log(middleOffset);
 
     //Set the color for the start (0%)
     linearGradient.append("stop")
