@@ -125,6 +125,7 @@ Promise.all([
     // Show Upper West Side by default
     makeLineChart("Upper West Side", JSON.stringify(forecasts["Upper West Side"]));
     var table = agg_nbhood_info("Upper West Side", JSON.stringify(agg_nbhood["Upper West Side"]));
+    borough_graph();
 
     // Handles tooltip behavior
     map.on("mousemove", "neighborhoods", function (e) {
@@ -152,6 +153,112 @@ Promise.all([
 
 
 // Helper functions
+
+function borough_graph() {
+    var data = [
+  { borough: "Bronx", Forecast: "7349", Airbnb: "2566"},
+  { borough: "Manhattan", Forecast: "25877", Airbnb: "9804"},
+  { borough: "Staten Island", Forecast: "8235", Airbnb: "1998"},
+  { borough: "Queens", Forecast: "12768", Airbnb: "7612"},
+  { borough: "Brooklyn", Forecast: "18443", Airbnb: "12002"},
+];
+
+    var example_stack = d3.stack()
+    .keys(["Forecast", "Airbnb"])
+    .order(d3.stackOrderNone)
+    .offset(d3.stackOffsetNone);
+    var stack = example_stack(data);
+    console.log(stack)
+
+var x = d3.scaleBand()
+  .domain(['Bronx', 'Manhattan', 'Staten Island', 'Queens', 'Brooklyn'])
+  .range([0, 325])
+  .padding(0.1)
+var y = d3.scaleLinear()
+  .domain([0, d3.max(stack, function(d) {  return d3.max(d, function(d) { return d[1]; });  })])
+  .range([150, 0]);
+
+var colors = ["b33040", "#d25c4d"];
+
+var svg = d3.select("#borough-chart")
+      .append("svg")
+        .attr("width", 0 + 400)
+        .attr("height", 0 + 200)
+        .attr("id", "svg")
+      .append("g")
+        .attr("transform",
+              "translate(" + 00 + "," + 0 + ")");
+
+var yAxis = d3.axisLeft()
+  .scale(y);
+
+var xAxis = d3.axisBottom()
+  .scale(x);
+
+svg.append("g")
+  .attr("class", "y axis")
+  .attr("transform",
+              "translate(" + 50 + "," + 0 + ")")
+  .call(yAxis);
+
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform",
+              "translate(" + 50 + "," + 130 + ")")  
+  .call(xAxis);
+
+
+// Create groups for each series, rects for each segment 
+var groups = svg.selectAll("g.cost")
+  .data(stack)
+  .enter().append("g")
+  .attr("class", "cost")
+  .style("fill", function(d, i) { return colors[i]; });
+
+var rect = groups.selectAll("rect")
+  .data(function(d) { return d; })
+  .enter()
+  .append("rect")
+  .attr("x", function(d) { return x(d.data.borough) + 70; })
+  .attr("y", function(d) { console.log(d[0],  d[1]);return 0+ y(d[1]); })
+  .attr("height", function(d) {  return y(d[0]) - y(d[1]); })
+  .attr("width", 20);
+  // .on("mouseover", function() { tooltip.style("display", null); })
+  // .on("mouseout", function() { tooltip.style("display", "none"); })
+  // .on("mousemove", function(d) {
+  //   var xPosition = d3.mouse(this)[0] - 15;
+  //   var yPosition = d3.mouse(this)[1] - 25;
+  //   tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+  //   tooltip.select("text").text(d.y);
+  // });
+
+
+
+// Draw legend
+var legend = svg.selectAll(".legend")
+  .data(colors)
+  .enter().append("g")
+  .attr("class", "legend")
+  .attr("transform", function(d, i) { return "translate(30," + i * 19 + ")"; });
+ 
+legend.append("rect")
+  .attr("x", width - 18)
+  .attr("width", 18)
+  .attr("height", 18)
+  .style("fill", function(d, i) {return colors.slice()[i];});
+ 
+legend.append("text")
+  .attr("x", width + 5)
+  .attr("y", 9)
+  .attr("dy", ".35em")
+  .style("text-anchor", "start")
+  .text(function(d, i) { 
+    switch (i) {
+      case 0: return "Forecast";
+      case 1: return "Airbnb";
+    }
+  });
+}
 
 function agg_nbhood_info(neighborhood, dict){
     dict = JSON.parse(dict);
