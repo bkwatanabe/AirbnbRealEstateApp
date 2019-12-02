@@ -21,34 +21,41 @@
 {#                Airbnb Real Estate#}
 {#            </div>#}
 {#        </div>#}
-        <div id="content" class="row mt-4">
+        <div id="content" class="row mt-3">
             <div id="left-hand-content" class="col-6">
-                <div id="map-header" class="row mb-2">
+                <div id="map-header" class="row mb-2 custom-shadow p-1">
                     Welcome to the Airbnb Real Estate App!
                     Use this tool to inform your next NYC real estate purchase decision.
-                    This app will show you which neighborhoods you can buy a house in to make a profit with Airbnb.
+                    This app shows the projected profitability of purchasing property for rental on Airbnb in NYC.
                     Click on a neighborhood for more information.
                 </div>
-                <div class="row">
-                    <div id="map"></div>
-                </div>
-                <div class="row">
-                    <div id="legend" class="col-6">
+                <div class="custom-shadow">
+                    <div class="row">
+                        <div id="map"></div>
                     </div>
-                    <div class="offset-1 col-5">
-                        <label for="year" style="font-size: 0.8rem">Months in the future: </label>
-                        <select name="year">
-                            <option>12</option>
-                        </select>
+                    <div class="row">
+                        <div id="legend" class="col-6 pt-2">
+                        </div>
+                        <div class="col-6 row">
+                            <div class="offset-1 col-7">
+                                <label for="year" style="font-size: 0.8rem">Future Forecast Length (Months): </label>
+                            </div>
+                            <div class="col-3 pt-2 pl-0">
+                                <select name="year">
+                                    <option>12</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="right-hand-content" class="col-6">
-                <div id="neighborhoodChart" class="row"> </div>
-                <div class="row">
-                    <div id="agg-data" class="offset-1 col-4">
+                <div id="neighborhoodChart" class="row custom-shadow"> </div>
+                <div class="row custom-shadow">
+                    <div id="agg-data" class="col-4 mt-3">
+                        <div id="agg-data-title" class="row text-center mb-2">Average Statistics for Upper West Side</div>
                     </div>
-                    <div id="borough-chart" class="col-7">
+                    <div id="borough-chart" class="col-8">
                     </div>
                 </div>
             </div>

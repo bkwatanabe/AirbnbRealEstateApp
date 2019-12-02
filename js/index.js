@@ -1,7 +1,3 @@
-const height = 320;
-const width = height * 1.25;
-const margin = {top: 50, bottom: 80, left: 100, right: 20}
-
 const log = $("#log");
 const input = $("#input");
 const neighborhoodPopover = $("#neighborhoodPopover");
@@ -100,7 +96,7 @@ Promise.all([
                 'fill-color': [
                     'case',
                     ["==", ['get', 'profit'], null],
-                    "#a5aeaf",
+                    "#e1e7e8",
                     ['interpolate',
                     ['linear'],
                     ['get', 'profit'],
@@ -155,6 +151,10 @@ Promise.all([
 // Helper functions
 
 function borough_graph() {
+    let height = 100;
+    let width = 220;
+    let margin = { top: 60, bottom: 60, left: 60, right: 60 };
+
     var data = [
   { borough: "Bronx", Forecast: "7349", Airbnb: "2566"},
   { borough: "Manhattan", Forecast: "25877", Airbnb: "9804"},
@@ -172,22 +172,19 @@ function borough_graph() {
 
 var x = d3.scaleBand()
   .domain(['Bronx', 'Manhattan', 'Staten Island', 'Queens', 'Brooklyn'])
-  .range([0, 300])
+  .range([0, width])
   .padding(0.1)
 var y = d3.scaleLinear()
   .domain([0, d3.max(stack, function(d) {  return d3.max(d, function(d) { return d[1]; });  })])
-  .range([100, 0]);
+  .range([height, 0]);
 
-var colors = ["b33040", "#d25c4d"];
+var colors = ["#D94C55", "#ffab99"];
 
 var svg = d3.select("#borough-chart")
       .append("svg")
-        .attr("width", 0 + 400)
-        .attr("height", 0 + 250)
-        .attr("id", "svg")
-      .append("g")
-        .attr("transform",
-              "translate(" + 00 + "," + 0 + ")");
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("id", "svg");
 
 var yAxis = d3.axisLeft()
   .scale(y);
@@ -198,33 +195,32 @@ var xAxis = d3.axisBottom()
 svg.append("g")
   .attr("class", "y axis")
   .attr("transform",
-              "translate(" + 60 + "," + 30 + ")")
+              "translate(" + margin.left + "," + margin.top + ")")
   .call(yAxis)
 
 svg.append("g")
   .attr("class", "x axis")
   .attr("transform",
-              "translate(" + 60 + "," + 130 + ")")  
+              "translate(" + margin.left + "," + (margin.top + height) + ")")
   .style("fill", "#000")
   .call(xAxis);
 
 svg.append("text")
-                .attr("class", "title")
-                .text("Borough Profits")
-                .attr("text-anchor", "middle")
-                .attr("x", 200)
-                .attr("y", 10)
-                .attr("font-size", "8px");
+    .attr("class", "title")
+    .text("Profit Contribution Breakdown by Borough")
+    .attr("text-anchor", "middle")
+    .attr("x", margin.left + width/2)
+    .attr("y", margin.top/2)
+    .attr("font-size", "0.7rem");
+
 svg.append("text")
-        .attr("class", "title")
-        .text("Profit($)")
-        .attr("text-anchor", "middle")
-
-        .attr("x", -70)
-        .attr("y", 10)
-
-        .attr("font-size", "10px")
-        .attr("transform", "rotate(-90)");
+    .attr("class", "title")
+    .text("Profit($)")
+    .attr("text-anchor", "middle")
+    .attr("x", -(margin.top + height/2))
+    .attr("y", 10)
+    .attr("font-size", "10px")
+    .attr("transform", "rotate(-90)");
 
 
 // Create groups for each series, rects for each segment 
@@ -234,14 +230,20 @@ var groups = svg.selectAll("g.cost")
   .attr("class", "cost")
   .style("fill", function(d, i) { return colors[i]; });
 
+let section_total = width/5;
+let bar_width = 20;
+
 var rect = groups.selectAll("rect")
   .data(function(d) { return d; })
   .enter()
   .append("rect")
-  .attr("x", function(d) { return x(d.data.borough) + 77; })
-  .attr("y", function(d) { console.log(d[0],  d[1]);return 30+ y(d[1]); })
+  .attr("x", function(d) { return x(d.data.borough) + margin.left + (section_total - bar_width)/2 - 3; })
+  .attr("y", function(d) { console.log(d[0],  d[1]);return margin.top + y(d[1]); })
   .attr("height", function(d) {  return y(d[0]) - y(d[1]); })
-  .attr("width", 20);
+  .attr("width", bar_width);
+
+// total width (width) (remainder/2)
+// (total - width)/2 + width
   // .on("mouseover", function() { tooltip.style("display", null); })
   // .on("mouseout", function() { tooltip.style("display", "none"); })
   // .on("mousemove", function(d) {
@@ -255,28 +257,30 @@ var rect = groups.selectAll("rect")
 
 // Draw legend
 var legend = svg.selectAll(".legend")
-  .data(colors)
-  .enter().append("g")
-  .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(30," + i * 10 + ")"; });
+  .data(colors.reverse()) // reverse to put Airbnb on top to match stacked bars
+  .enter()
+  //   .append("g")
+  // .attr("class", "legend")
+  // .attr("transform", function(d, i) { return "translate(30," + i * 10 + ")"; });
  
 legend.append("rect")
-  .attr("x", 268)
+  .attr("x", margin.left + width * 0.80)
+    .attr("y", function(d, i){ console.log(i); return i * 10 + 42;})
   .attr("width", 8)
   .attr("height", 8)
   .style("fill", function(d, i) {return colors.slice()[i];});
  
 legend.append("text")
-  .attr("x",  280)
-  .attr("y", 6)
+  .attr("x",  margin.left + width * 0.80 + 12)
+  .attr("y", function(d, i){ console.log(i); return i * 10 + 47;})
   .attr("dy", "1px")
   .attr("font-size", "8px")
 
   .style("text-anchor", "start")
   .text(function(d, i) { 
     switch (i) {
-      case 0: return "Forecast";
-      case 1: return "Airbnb";
+      case 0: return "Airbnb Rental";
+      case 1: return "Property Appreciation";
     }
   });
 
@@ -288,36 +292,46 @@ function agg_nbhood_info(neighborhood, dict){
     console.log(dict);
     var table = d3.select("#agg-data").append("table")
             .attr("style", "margin-left: 0px")
-            .attr("style", "font-size: 6.5px")
-
+            .attr("style", "font-size: 0.5rem")
             .attr("id", "table");
-    var thead = table.append("thead");
+
+    // var thead = table.append("thead");
     var tbody = table.append("tbody");
     var columns = ['near_landmarks', 'near_subways', 'most_recent', 'availability_365', 'calculated_host_listings_count', 'minimum_nights', 'price']
+
+    let col_labels = {'near_landmarks': "Landmarks",
+        'near_subways': "Subway Stations",
+        'most_recent': "Days Since Last Review",
+        'availability_365': "Days Available per Year",
+        'calculated_host_listings_count': "Listings per Host",
+        'minimum_nights': "Minimum Nights per Stay",
+        'price': "Price($)"};
     // append the header row
     data = Object.keys(dict).map(function(k) { return {key:k, value:dict[k]} })
-    thead.append("tr")
-        .selectAll("th")
-        .data(['Attribute', 'Average Value'])
-        .enter()
-        .append("th")
-            .text(function(column) { return column; });
+    // thead.append("tr")
+    //     .selectAll("th")
+    //     .data(['Attribute', 'Average Value'])
+    //     .enter()
+    //     .append("th")
+    //         .text(function(column) { return column; });
 
     // create a row for each object in the data
     var rows = tbody.selectAll("tr")
         .data(data)
         .enter()
         .append('tr');
-    rows.append("td")
-    .text(function(d) { ;return d.key; });
 
-    rows
-    .append("td")
-    .append("input")
-    .attr('readonly', true)
-    .attr("name", "byName")
-    .attr("type", "text")
-    .attr("value",function(d) { return Math.round(d.value); });
+    rows.append("td")
+        .text(function(d) { ;return col_labels[d.key]; });
+
+    rows.append("td")
+        .attr("class", "text-right")
+        .text(function(d) { return Math.round(d.value); });
+    // .append("input")
+    // .attr('readonly', true)
+    // .attr("name", "byName")
+    // .attr("type", "text")
+    // .attr("value",function(d) { return Math.round(d.value); });
 
     // create a cell in each row for each column
     // var cells = rows.selectAll("td")
@@ -335,7 +349,12 @@ function agg_nbhood_info(neighborhood, dict){
     return table;
 
 }
+
 function makeLineChart(neighborhood, dict){
+    let height = 340;
+    let width = height * 1.25;
+    let margin = {top: 50, bottom: 50, left: 80, right: 20};
+
     var svg = d3.select("#neighborhoodChart")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -387,7 +406,7 @@ function makeLineChart(neighborhood, dict){
         .text("Year")
         .attr("text-anchor", "middle")
         .attr("x", margin.left + width/2)
-        .attr("y", margin.top + height + margin.bottom/2)
+        .attr("y", margin.top + height + 40)
         .attr("font-size", "0.8rem");
 
     // Add Y axis
@@ -403,7 +422,7 @@ function makeLineChart(neighborhood, dict){
     svg.append("text")
         .text("Price ($)")
         .attr("text-anchor", "middle")
-        .attr("y", margin.left/3)
+        .attr("y", margin.left/4)
         .attr("x", -(margin.top + height/2))
         .attr("font-size", "0.8rem")
         .attr("transform", "rotate(-90)");

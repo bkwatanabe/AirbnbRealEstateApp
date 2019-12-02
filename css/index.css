@@ -1,3 +1,7 @@
+body {
+    background-color: aliceblue;
+}
+
 .line {
     fill: none;
     stroke: #ffab99;
@@ -18,7 +22,6 @@
 #map {
     height: 420px;
     width: 100%;
-    margin-bottom: 20px;
     border-radius: 4px;
     z-index: 0
 }
@@ -26,4 +29,22 @@
 .axis path, .axis tick, .axis line {
     fill: none;
     stroke: #000;
+}
+
+#agg-data-title {
+    font-size: 0.7rem;
+}
+
+.axis.x text {
+    transform: rotate(-45deg)translate(-18px, 10px);
+}
+
+.row {
+    margin: 0.8rem 0 !important;
+}
+
+.custom-shadow {
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+    border-radius: 5px;
+    background-color: white;
 }
