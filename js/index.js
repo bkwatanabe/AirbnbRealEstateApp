@@ -315,6 +315,7 @@ legend.append("text")
 function agg_nbhood_info(neighborhood, dict){
     dict = JSON.parse(dict);
     // console.log(dict);
+    d3.select("#agg-data-title").text("Average Statistics for " + neighborhood);
     var table = d3.select("#agg-data").append("table")
             .attr("style", "margin-left: 0px")
             .attr("style", "font-size: 0.5rem")
