@@ -1,11 +1,15 @@
 const log = $("#log");
 const input = $("#input");
 const neighborhoodPopover = $("#neighborhoodPopover");
-const neighborhoodChart = $("#neighborhoodChart");
-const mapLegendDiv = $("#legend");
+const monthDropdown = $("#month");
 
 const baseURL = calcBaseURL();
 
+buildDropdown();
+
+// The super helpful examples
+    // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
+    // https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/
 
 
 // Whenever this form has a submit event,
@@ -35,34 +39,12 @@ const baseURL = calcBaseURL();
 // Load nyc geojson and profit dictionary
 Promise.all([
     d3.json(baseURL + "/static/nyc.json"),
-    d3.json(baseURL + "/static/just_profit_dict.json"),
+    d3.json(baseURL + "/static/just_profit.json"),
     d3.json(baseURL + "/static/forecasts.json"),
     d3.json(baseURL + "/static/agg_data_nbhood.json")
-
-
-
 ]).then(function([nyc, profit, forecasts, agg_nbhood]){
 
-    // add profit attribute to each feature
-    nyc.features.forEach(function(d){
-        d.properties.profit = profit[d.properties.neighborhood];
-        d.properties.forecasts = forecasts[d.properties.neighborhood];
-        d.properties.agg = agg_nbhood[d.properties.neighborhood];
-
-    });
-
-    // hardcoded for now, but can be changed later
-    minProfit = -320201.2825470001;
-    maxProfit = 135032.2265031793;
-
-    // Not sure if we're gonna use this or not
-    colorScale = d3.scaleQuantize()
-        .domain([minProfit, maxProfit])
-        .range(d3.schemeRdYlGn[9]);
-
-    colorScale_section_size = (maxProfit - minProfit) / 8;
-
-    // Setup map
+    // Create map
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFuazc2NSIsImEiOiJjazJ5ZHNndDgwNzI0M2JxdGZpaHh6OTFyIn0.NbINRMNm2chbLryFxoWCtg';
     map = new mapboxgl.Map({
         container: 'map',
@@ -77,23 +59,70 @@ Promise.all([
         )
     });
 
-    makeMapLegend(minProfit, maxProfit);
-
-    // adds zoom widget
+    // Add zoom widget
     map.addControl(new mapboxgl.NavigationControl());
 
-    // Adds the geojson and coloring on map load
+    // Builds all visuals.
+    // Sets event listener on dropdown to change forecast month
     map.on('load', function () {
-        layer = map.addLayer({
-            'id': 'neighborhoods',
-            'type': 'fill',
-            'source': {
-                'type': 'geojson',
-                'data': nyc
-            },
-            'layout': {},
-            'paint': {
-                'fill-color': [
+
+        setMapLayer("12");
+
+        // Show Upper West Side by default
+        makeLineChart("Upper West Side", JSON.stringify(forecasts["Upper West Side"]));
+        var table = agg_nbhood_info("Upper West Side", JSON.stringify(agg_nbhood["Upper West Side"]));
+        borough_graph();
+
+        monthDropdown.on("change", function(){
+            setMapLayer(monthDropdown.val())
+        });
+    });
+
+
+    function setMapLayer(month) {
+        let minProfit = 9999999;
+        let maxProfit = -9999999;
+
+        nyc.features.forEach(function(d){
+            // only set once
+            if(d.properties.forecasts == undefined){
+                d.properties.forecasts = forecasts[d.properties.neighborhood];
+                d.properties.agg = agg_nbhood[d.properties.neighborhood];
+            }
+
+            d.properties.profit = profit[month][d.properties.neighborhood];
+            if(d.properties.profit != null){
+                if(d.properties.profit < minProfit) {
+                    minProfit = d.properties.profit;
+                }
+                if(d.properties.profit > maxProfit) {
+                    maxProfit = d.properties.profit;
+                }
+            }
+        });
+
+        makeMapLegend(minProfit, maxProfit);
+
+        // If source not initiated, create source and layer with constant paint options
+        if(map.getSource("source_id") == undefined) {
+            map.addSource('source_id', {"type": "geojson", "data":nyc});
+            map.addLayer({"id": "layer_id", "source": "source_id", "type":"fill", "layout":{}});
+            map.setPaintProperty("layer_id",'fill-outline-color', '#000');
+            map.setPaintProperty("layer_id",'fill-opacity', [
+                    'case',
+                    ["==", ['get', 'profit'], null],
+                    0.6,
+                    0.8
+                ]);
+        }
+
+        // If source is initiated, update the source data
+        else {
+            map.getSource("source_id").setData(nyc);
+        }
+
+        // Update paint color
+        map.setPaintProperty("layer_id","fill-color", [
                     'case',
                     ["==", ['get', 'profit'], null],
                     "#e1e7e8",
@@ -103,48 +132,36 @@ Promise.all([
                     minProfit, "#D2222D",
                     0, "#FFE599",
                     maxProfit, "#007000"]
-                ],
-                'fill-opacity': [
-                    'case',
-                    ["==", ['get', 'profit'], null],
-                    0.6,
-                    0.8
-                ],
-                'fill-outline-color': '#000'
+                ]);
+
+        // Handles tooltip behavior
+        map.on("mousemove", "layer_id", function (e) {
+            let tooltip = buildToolTip(e.features[0].properties.neighborhood, e.features[0].properties.profit);
+            neighborhoodPopover.css("left", (e.originalEvent.pageX + 10) + "px");
+            neighborhoodPopover.css("top", (e.originalEvent.pageY - 12) + "px");
+            neighborhoodPopover.css("opacity", 1);
+            neighborhoodPopover.css("z-index", 1);
+            neighborhoodPopover.html(tooltip);
+
+            // Changes cursor if hovering over neighborhood without data
+            map.getCanvas().style.cursor = e.features[0].properties.profit == "null" ? 'not-allowed' : '';
+        });
+
+        // Make tooltip disappear
+        map.on("mouseleave", "layer_id", function (e) {
+            neighborhoodPopover.css("opacity", 0);
+        });
+
+        // If neighborhood has data, update graphs and table
+        map.on("click", "layer_id", function (e) {
+            if(e.features[0].properties.profit != "null") {
+                d3.select("#svg").remove();
+                d3.select("#table").remove();
+                var table = agg_nbhood_info(e.features[0].properties.neighborhood, e.features[0].properties.agg)
+                makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
             }
         });
-    });
-    // The super helpful examples
-    // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
-    // https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/
-
-    // Show Upper West Side by default
-    makeLineChart("Upper West Side", JSON.stringify(forecasts["Upper West Side"]));
-    var table = agg_nbhood_info("Upper West Side", JSON.stringify(agg_nbhood["Upper West Side"]));
-    borough_graph();
-
-    // Handles tooltip behavior
-    map.on("mousemove", "neighborhoods", function (e) {
-        let tooltip = buildToolTip(e.features[0].properties.neighborhood, e.features[0].properties.profit);
-        neighborhoodPopover.css("left", e.originalEvent.pageX + "px");
-        neighborhoodPopover.css("top", e.originalEvent.pageY + "px");
-        neighborhoodPopover.css("opacity", 1);
-        neighborhoodPopover.css("z-index", 1);
-        neighborhoodPopover.html(tooltip);
-    });
-
-    map.on("mouseleave", "neighborhoods", function (e) {
-        neighborhoodPopover.css("opacity", 0);
-    });
-
-    map.on("click", "neighborhoods", function (e) {
-        d3.select("#svg").remove();
-        d3.select("#table").remove();
-        var table = agg_nbhood_info(e.features[0].properties.neighborhood, e.features[0].properties.agg)
-        makeLineChart(e.features[0].properties.neighborhood, e.features[0].properties.forecasts)
-
-    });
-
+    }
 });
 
 
@@ -168,7 +185,7 @@ function borough_graph() {
     .order(d3.stackOrderNone)
     .offset(d3.stackOffsetNone);
     var stack = example_stack(data);
-    console.log(stack)
+    // console.log(stack)
 
 var x = d3.scaleBand()
   .domain(['Bronx', 'Manhattan', 'Staten Island', 'Queens', 'Brooklyn'])
@@ -240,7 +257,9 @@ var rect = groups.selectAll("rect")
   .enter()
   .append("rect")
   .attr("x", function(d) { return x(d.data.borough) + margin.left + (section_total - bar_width)/2 - 3; })
-  .attr("y", function(d) { console.log(d[0],  d[1]);return margin.top + y(d[1]); })
+  .attr("y", function(d) {
+      // console.log(d[0],  d[1]);
+      return margin.top + y(d[1]); })
   .attr("height", function(d) {  return y(d[0]) - y(d[1]); })
   .attr("width", bar_width);
 
@@ -267,14 +286,18 @@ var legend = svg.selectAll(".legend")
  
 legend.append("rect")
   .attr("x", margin.left + width * 0.80)
-    .attr("y", function(d, i){ console.log(i); return i * 10 + 42;})
+    .attr("y", function(d, i){
+        // console.log(i);
+        return i * 10 + 42;})
   .attr("width", 8)
   .attr("height", 8)
   .style("fill", function(d, i) {return colors.slice()[i];});
  
 legend.append("text")
   .attr("x",  margin.left + width * 0.80 + 12)
-  .attr("y", function(d, i){ console.log(i); return i * 10 + 47;})
+  .attr("y", function(d, i){
+      // console.log(i);
+      return i * 10 + 47;})
   .attr("dy", "1px")
   .attr("font-size", "8px")
 
@@ -291,7 +314,7 @@ legend.append("text")
 
 function agg_nbhood_info(neighborhood, dict){
     dict = JSON.parse(dict);
-    console.log(dict);
+    // console.log(dict);
     var table = d3.select("#agg-data").append("table")
             .attr("style", "margin-left: 0px")
             .attr("style", "font-size: 0.5rem")
@@ -473,6 +496,9 @@ function calcBaseURL(){
 }
 
 function makeMapLegend(minProfit, maxProfit){
+    // Remove legend if one is there
+    d3.select("#map-legend").remove();
+
     let width = 200;
     let height = 10;
     let margin = {top: 20, bottom: 20, left: 25, right: 25};
@@ -547,4 +573,16 @@ function makeMapLegend(minProfit, maxProfit){
         .attr("transform", "translate(" + margin.left + "," + (margin.top + height/2) + ")")
         .attr('stroke-width', 0)
         .call(xAxis);
+}
+
+// currently supports 59 months into the future
+function buildDropdown(){
+    for(var i = 1; i <= 59; i++){
+        if(i == 12){
+            monthDropdown.append("<option selected>" + i + "</option>");
+        }
+        else{
+            monthDropdown.append("<option>" + i + "</option>");
+        }
+    }
 }
