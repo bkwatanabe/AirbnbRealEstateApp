@@ -182,8 +182,10 @@ var colors = ["#D94C55", "#ffab99"];
 
 var svg = d3.select("#borough-chart")
       .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+    .attr("width", "100%")
+        // .attr("width", width + margin.left + margin.right)
+        // .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " +  (height + margin.top + margin.bottom))
         .attr("id", "svg");
 
 var yAxis = d3.axisLeft()
@@ -357,8 +359,8 @@ function makeLineChart(neighborhood, dict){
 
     var svg = d3.select("#neighborhoodChart")
       .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", "100%")
+        .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
         .attr("id", "svg");
 
     var data = [];
@@ -471,9 +473,14 @@ function calcBaseURL(){
 }
 
 function makeMapLegend(minProfit, maxProfit){
+    let width = 200;
+    let height = 10;
+    let margin = {top: 20, bottom: 20, left: 25, right: 25};
+
     let svg = d3.select("#legend").append("svg");
+
     svg.attr("width", "100%")
-        .attr("height", "50px")
+        .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
         .attr("id", "map-legend");
 
     let defs = svg.append("defs");
@@ -507,23 +514,24 @@ function makeMapLegend(minProfit, maxProfit){
     svg.append("rect")
         .attr("width", "200px")
         .attr("height", "10px")
+        .attr("x", margin.left)
+        .attr("y", margin.top)
         .style("fill", "url(#linear-gradient)")
         .style("fill-opacity", 0.90)
-
-        .attr("transform", "translate(20,20)");
+        // .attr("transform", "translate(20,20)");
 
     // legend title
     svg.append("text")
         .attr("class", "legendTitle")
-        .attr("x", 120)
-        .attr("y", 10)
+        .attr("x", margin.left + width/2)
+        .attr("y", margin.top/2)
         .style("text-anchor", "middle")
         .text("Expected Profit ($)")
         .style("font-size", "0.8rem");
 
     //Set scale for x-axis
     var xScale = d3.scaleLinear()
-         .range([0, 200])
+         .range([0, width])
          .domain([ minProfit, maxProfit] );
 
     //Define x-axis
@@ -536,7 +544,7 @@ function makeMapLegend(minProfit, maxProfit){
     //Set up X axis
     svg.append("g")
         .attr("class", "axis")
-        .attr("transform", "translate(20,25)")
+        .attr("transform", "translate(" + margin.left + "," + (margin.top + height/2) + ")")
         .attr('stroke-width', 0)
         .call(xAxis);
 }
