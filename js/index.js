@@ -41,8 +41,9 @@ Promise.all([
     d3.json(baseURL + "/static/nyc.json"),
     d3.json(baseURL + "/static/just_profit.json"),
     d3.json(baseURL + "/static/forecasts.json"),
-    d3.json(baseURL + "/static/agg_data_nbhood.json")
-]).then(function([nyc, profit, forecasts, agg_nbhood]){
+    d3.json(baseURL + "/static/agg_data_nbhood.json"),
+    d3.json(baseURL + "/static/burough.json")
+]).then(function([nyc, profit, forecasts, agg_nbhood, borough]){
 
     // Create map
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFuazc2NSIsImEiOiJjazJ5ZHNndDgwNzI0M2JxdGZpaHh6OTFyIn0.NbINRMNm2chbLryFxoWCtg';
@@ -71,10 +72,12 @@ Promise.all([
         // Show Upper West Side by default
         makeLineChart("Upper West Side", JSON.stringify(forecasts["Upper West Side"]));
         var table = agg_nbhood_info("Upper West Side", JSON.stringify(agg_nbhood["Upper West Side"]));
-        borough_graph();
+        borough_graph(borough["12"]);
 
         monthDropdown.on("change", function(){
-            setMapLayer(monthDropdown.val())
+            let month = monthDropdown.val()
+            setMapLayer(month);
+            borough_graph(borough[month]);
         });
     });
 
@@ -167,23 +170,28 @@ Promise.all([
 
 // Helper functions
 
-function borough_graph() {
+function borough_graph(data) {
+    console.log(data);
+    d3.select("#borough-svg").remove();
     let height = 100;
     let width = 220;
     let margin = { top: 60, bottom: 60, left: 60, right: 60 };
 
-    var data = [
-  { borough: "Bronx", Forecast: "7349", Airbnb: "2566"},
-  { borough: "Manhattan", Forecast: "25877", Airbnb: "9804"},
-  { borough: "Staten Island", Forecast: "8235", Airbnb: "1998"},
-  { borough: "Queens", Forecast: "12768", Airbnb: "7612"},
-  { borough: "Brooklyn", Forecast: "18443", Airbnb: "12002"},
-];
+//     var data = [
+//   { borough: "Bronx", Forecast: "7349", Airbnb: "2566"},
+//   { borough: "Manhattan", Forecast: "25877", Airbnb: "9804"},
+//   { borough: "Staten Island", Forecast: "8235", Airbnb: "1998"},
+//   { borough: "Queens", Forecast: "12768", Airbnb: "7612"},
+//   { borough: "Brooklyn", Forecast: "18443", Airbnb: "12002"},
+// ];
+
+    // var data = data_json[month];
+    // console.log(data);
 
     var example_stack = d3.stack()
     .keys(["Forecast", "Airbnb"])
     .order(d3.stackOrderNone)
-    .offset(d3.stackOffsetNone);
+    .offset(d3.stackOffsetDiverging);
     var stack = example_stack(data);
     // console.log(stack)
 
@@ -192,7 +200,8 @@ var x = d3.scaleBand()
   .range([0, width])
   .padding(0.1)
 var y = d3.scaleLinear()
-  .domain([0, d3.max(stack, function(d) {  return d3.max(d, function(d) { return d[1]; });  })])
+  .domain([d3.min(stack, function(d) {  return d3.min(d, function(d) { return d[0]; });  }),
+      d3.max(stack, function(d) {  return d3.max(d, function(d) { return d[1]; });  })])
   .range([height, 0]);
 
 var colors = ["#D94C55", "#ffab99"];
@@ -203,9 +212,9 @@ var svg = d3.select("#borough-chart")
         // .attr("width", width + margin.left + margin.right)
         // .attr("height", height + margin.top + margin.bottom)
     .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " +  (height + margin.top + margin.bottom))
-        .attr("id", "svg");
+        .attr("id", "borough-svg");
 
-var yAxis = d3.axisLeft()
+var yAxis = d3.axisLeft().ticks(7)
   .scale(y);
 
 var xAxis = d3.axisBottom()
@@ -217,12 +226,12 @@ svg.append("g")
               "translate(" + margin.left + "," + margin.top + ")")
   .call(yAxis)
 
-svg.append("g")
-  .attr("class", "x axis")
-  .attr("transform",
-              "translate(" + margin.left + "," + (margin.top + height) + ")")
-  .style("fill", "#000")
-  .call(xAxis);
+// svg.append("g")
+//   .attr("class", "x axis")
+//   .attr("transform",
+//               "translate(" + margin.left + "," + (margin.top + y(0)) + ")")
+//   .style("fill", "#000")
+//   .call(xAxis);
 
 svg.append("text")
     .attr("class", "title")
@@ -263,6 +272,24 @@ var rect = groups.selectAll("rect")
   .attr("height", function(d) {  return y(d[0]) - y(d[1]); })
   .attr("width", bar_width);
 
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform",
+              "translate(" + margin.left + "," + (margin.top + height) + ")")
+              // "translate(" + margin.left + "," + (margin.top + y(0)) + ")")
+  .style("fill", "#000")
+  .call(xAxis);
+
+svg.append('line')
+    .attr('x1', 0)
+    .attr('y1', y(0))
+    .attr('x2', width)
+    .attr('y2', y(0))
+    .attr('stroke', "#000")
+    .attr("transform",
+              "translate(" + margin.left + "," + (margin.top) + ")")
+    .attr('class', 'zeroline');
+
 // total width (width) (remainder/2)
 // (total - width)/2 + width
   // .on("mouseover", function() { tooltip.style("display", null); })
@@ -278,7 +305,7 @@ var rect = groups.selectAll("rect")
 
 // Draw legend
 var legend = svg.selectAll(".legend")
-  .data(colors.reverse()) // reverse to put Airbnb on top to match stacked bars
+  .data(colors) // reverse to put Airbnb on top to match stacked bars
   .enter()
   //   .append("g")
   // .attr("class", "legend")
@@ -578,7 +605,7 @@ function makeMapLegend(minProfit, maxProfit){
 
 // currently supports 59 months into the future
 function buildDropdown(){
-    for(var i = 1; i <= 59; i++){
+    for(var i = 1; i <= 57; i++){
         if(i == 12){
             monthDropdown.append("<option selected>" + i + "</option>");
         }

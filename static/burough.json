@@ -1,0 +1,1568 @@
+{
+  "0": [
+    {
+      "borough": "Bronx",
+      "Forecast": 0.0,
+      "Airbnb": 2540.5704652042627
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 0.0,
+      "Airbnb": -3990.1675694036567
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 0.0,
+      "Airbnb": 1586.4347811114658
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 0.0,
+      "Airbnb": 1589.5144250027668
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 0.0,
+      "Airbnb": -2235.071893907858
+    }
+  ],
+  "1": [
+    {
+      "borough": "Bronx",
+      "Forecast": 660.638513065168,
+      "Airbnb": 4679.30766396658
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 1328.7595676215603,
+      "Airbnb": -8672.5751857429
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 513.3887995645179,
+      "Airbnb": 3160.440378817572
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 471.8320637294514,
+      "Airbnb": 2848.721499671474
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 702.7817987885405,
+      "Airbnb": -4906.49619528254
+    }
+  ],
+  "2": [
+    {
+      "borough": "Bronx",
+      "Forecast": 1321.277026130336,
+      "Airbnb": 6126.587805113915
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 2657.5191352431207,
+      "Airbnb": -13739.509779282038
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 1026.7775991290357,
+      "Airbnb": 4145.118325970456
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 943.6641274589028,
+      "Airbnb": 3573.989457180364
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 1405.563597577081,
+      "Airbnb": -7361.437224141462
+    }
+  ],
+  "3": [
+    {
+      "borough": "Bronx",
+      "Forecast": 1981.9155391955037,
+      "Airbnb": 7353.5055863449
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 3986.2787028646812,
+      "Airbnb": -17746.136363871494
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 1540.1663986935534,
+      "Airbnb": 5177.960299477245
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 1415.4961911883543,
+      "Airbnb": 4165.831099031852
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 2108.345396365622,
+      "Airbnb": -8924.966352326384
+    }
+  ],
+  "4": [
+    {
+      "borough": "Bronx",
+      "Forecast": 2642.554052260672,
+      "Airbnb": 8322.764747834026
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 5315.038270486241,
+      "Airbnb": -21890.140645294923
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 2053.5551982580714,
+      "Airbnb": 6615.567957146156
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 1887.3282549178057,
+      "Airbnb": 4267.405065707822
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 2811.127195154162,
+      "Airbnb": -10117.300497389215
+    }
+  ],
+  "5": [
+    {
+      "borough": "Bronx",
+      "Forecast": 3303.1925653258395,
+      "Airbnb": 9033.08671923541
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 6643.797838107801,
+      "Airbnb": -28365.84914395349
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 2566.943997822589,
+      "Airbnb": 8310.109222385447
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 2359.1603186472576,
+      "Airbnb": 4040.6645495133866
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 3513.9089939427026,
+      "Airbnb": -12104.051947555663
+    }
+  ],
+  "6": [
+    {
+      "borough": "Bronx",
+      "Forecast": 3963.8310783910074,
+      "Airbnb": 10362.904456171329
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 7972.5574057293625,
+      "Airbnb": -35899.143921763476
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 3080.332797387107,
+      "Airbnb": 9817.027752182881
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 2830.9923823767085,
+      "Airbnb": 3547.6469635270346
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 4216.690792731244,
+      "Airbnb": -15011.31826488501
+    }
+  ],
+  "7": [
+    {
+      "borough": "Bronx",
+      "Forecast": 4624.469591456175,
+      "Airbnb": 12615.040631726197
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 9301.31697335092,
+      "Airbnb": -42918.63546321757
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 3593.721596951624,
+      "Airbnb": 11194.05549317888
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 3302.82444610616,
+      "Airbnb": 3033.45067974419
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 4919.472591519784,
+      "Airbnb": -18566.70758257958
+    }
+  ],
+  "8": [
+    {
+      "borough": "Bronx",
+      "Forecast": 5285.108104521344,
+      "Airbnb": 14286.34941905178
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 10630.076540972483,
+      "Airbnb": -50909.73255889706
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 4107.110396516143,
+      "Airbnb": 12228.8177420704
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 3774.6565098356114,
+      "Airbnb": 2453.761093606232
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 5622.254390308324,
+      "Airbnb": -22402.733276724954
+    }
+  ],
+  "9": [
+    {
+      "borough": "Bronx",
+      "Forecast": 5945.746617586512,
+      "Airbnb": 14590.535072511759
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 11958.83610859404,
+      "Airbnb": -59603.02125169484
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 4620.499196080661,
+      "Airbnb": 13069.336670508914
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 4246.488573565063,
+      "Airbnb": 2300.0927534687835
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 6325.036189096866,
+      "Airbnb": -25626.338606103065
+    }
+  ],
+  "10": [
+    {
+      "borough": "Bronx",
+      "Forecast": 6606.385130651679,
+      "Airbnb": 14871.738782830236
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 13287.595676215602,
+      "Airbnb": -66650.00445084019
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 5133.887995645178,
+      "Airbnb": 13615.227385592008
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 4718.320637294515,
+      "Airbnb": 2565.1140259046747
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 7027.817987885405,
+      "Airbnb": -27773.731165098947
+    }
+  ],
+  "11": [
+    {
+      "borough": "Bronx",
+      "Forecast": 7267.023643716845,
+      "Airbnb": 16448.254773008353
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 14616.355243837163,
+      "Airbnb": -71165.34783046324
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 5647.276795209695,
+      "Airbnb": 14439.499584764897
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 5190.152701023966,
+      "Airbnb": 3604.7542511724464
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 7730.599786673947,
+      "Airbnb": -29230.90773590738
+    }
+  ],
+  "12": [
+    {
+      "borough": "Bronx",
+      "Forecast": 7927.662156782015,
+      "Airbnb": 18820.16125027671
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 15945.114811458725,
+      "Airbnb": -75695.50689838607
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 6160.665594774214,
+      "Airbnb": 15835.628496957308
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 5661.984764753417,
+      "Airbnb": 4830.5954163922715
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 8433.381585462488,
+      "Airbnb": -31770.13586035455
+    }
+  ],
+  "13": [
+    {
+      "borough": "Bronx",
+      "Forecast": 8588.300669847182,
+      "Airbnb": 20922.763184377753
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 17273.874379080284,
+      "Airbnb": -80398.19173590292
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 6674.054394338732,
+      "Airbnb": 17373.06071670667
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 6133.816828482869,
+      "Airbnb": 6020.4386391541875
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 9136.163384251027,
+      "Airbnb": -34265.67456562402
+    }
+  ],
+  "14": [
+    {
+      "borough": "Bronx",
+      "Forecast": 9248.93918291235,
+      "Airbnb": 22348.52056128288
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 18602.63394670184,
+      "Airbnb": -85413.06679090258
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 7187.443193903248,
+      "Airbnb": 18306.087773724612
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 6605.64889221232,
+      "Airbnb": 6673.2829539286595
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 9838.945183039568,
+      "Airbnb": -36547.053646755216
+    }
+  ],
+  "15": [
+    {
+      "borough": "Bronx",
+      "Forecast": 9909.577695977518,
+      "Airbnb": 23573.332030903563
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 19931.393514323405,
+      "Airbnb": -89372.51242175368
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 7700.8319934677675,
+      "Airbnb": 19285.569182201958
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 7077.480955941773,
+      "Airbnb": 7209.176954426486
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 10541.726981828107,
+      "Airbnb": -37950.173103084904
+    }
+  ],
+  "16": [
+    {
+      "borough": "Bronx",
+      "Forecast": 10570.216209042688,
+      "Airbnb": 24561.55880297534
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 21260.153081944965,
+      "Airbnb": -93393.11906078875
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 8214.220793032286,
+      "Airbnb": 20684.115224924917
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 7549.313019671223,
+      "Airbnb": 7281.79235647866
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 11244.508780616648,
+      "Airbnb": -38970.85327785261
+    }
+  ],
+  "17": [
+    {
+      "borough": "Bronx",
+      "Forecast": 11230.854722107855,
+      "Airbnb": 25276.17165990824
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 22588.912649566522,
+      "Airbnb": -99567.1324467733
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 8727.609592596802,
+      "Airbnb": 22354.800021270083
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 8021.145083400675,
+      "Airbnb": 7037.925562807771
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 11947.29057940519,
+      "Airbnb": -40748.584379922
+    }
+  ],
+  "18": [
+    {
+      "borough": "Bronx",
+      "Forecast": 11891.493235173024,
+      "Airbnb": 26565.053844344613
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 23917.67221718808,
+      "Airbnb": -106734.08989474965
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 9240.998392161322,
+      "Airbnb": 23833.868063895236
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 8492.977147130126,
+      "Airbnb": 6529.138422106524
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 12650.072378193732,
+      "Airbnb": -43403.264539300806
+    }
+  ],
+  "19": [
+    {
+      "borough": "Bronx",
+      "Forecast": 12552.131748238187,
+      "Airbnb": 28759.753353363398
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 25246.431784809647,
+      "Airbnb": -113398.54332349746
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 9754.387191725838,
+      "Airbnb": 25175.36558714548
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 8964.80921085958,
+      "Airbnb": 5999.387575263602
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 13352.854176982273,
+      "Airbnb": -46691.25067458379
+    }
+  ],
+  "20": [
+    {
+      "borough": "Bronx",
+      "Forecast": 13212.770261303358,
+      "Airbnb": 30406.87255148362
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 26575.191352431204,
+      "Airbnb": -120936.32973196074
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 10267.775991290357,
+      "Airbnb": 26158.436574181753
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 9436.64127458903,
+      "Airbnb": 5392.199246703934
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 14055.63597577081,
+      "Airbnb": -50268.17713830856
+    }
+  ],
+  "21": [
+    {
+      "borough": "Bronx",
+      "Forecast": 13873.408774368527,
+      "Airbnb": 30738.44920975005
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 27903.950920052765,
+      "Airbnb": -129132.49016988126
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 10781.164790854873,
+      "Airbnb": 26941.234532145387
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 9908.473338318481,
+      "Airbnb": 5200.592958833849
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 14758.417774559355,
+      "Airbnb": -53269.79961985968
+    }
+  ],
+  "22": [
+    {
+      "borough": "Bronx",
+      "Forecast": 14534.04728743369,
+      "Airbnb": 31039.88822633759
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 29232.710487674325,
+      "Airbnb": -135865.99641794627
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 11294.55359041939,
+      "Airbnb": 27418.47633284431
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 10380.305402047932,
+      "Airbnb": 5416.400022704927
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 15461.199573347894,
+      "Airbnb": -55234.17055401152
+    }
+  ],
+  "23": [
+    {
+      "borough": "Bronx",
+      "Forecast": 15194.685800498864,
+      "Airbnb": 32588.270548213754
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 30561.47005529589,
+      "Airbnb": -140344.6943833866
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 11807.94238998391,
+      "Airbnb": 28178.53178692301
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 10852.137465777387,
+      "Airbnb": 6393.125737927594
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 16163.981372136432,
+      "Airbnb": -56527.08707758285
+    }
+  ],
+  "24": [
+    {
+      "borough": "Bronx",
+      "Forecast": 15855.32431356403,
+      "Airbnb": 34912.11597034462
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 31890.22962291745,
+      "Airbnb": -144893.37078326926
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 12321.331189548428,
+      "Airbnb": 29530.964662154554
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 11323.969529506834,
+      "Airbnb": 7546.151252147611
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 16866.763170924976,
+      "Airbnb": -58902.894097786775
+    }
+  ],
+  "25": [
+    {
+      "borough": "Bronx",
+      "Forecast": 16515.962826629195,
+      "Airbnb": 36981.3744770149
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 33218.98919053901,
+      "Airbnb": -149589.63792011677
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 12834.719989112944,
+      "Airbnb": 31038.31422724472
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 11795.801593236287,
+      "Airbnb": 8659.257588626993
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 17569.54496971351,
+      "Airbnb": -61234.92653185175
+    }
+  ],
+  "26": [
+    {
+      "borough": "Bronx",
+      "Forecast": 17176.601339694364,
+      "Airbnb": 38387.579905635976
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 34547.74875816057,
+      "Airbnb": -154527.6145243628
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 13348.108788677464,
+      "Airbnb": 31926.699007682106
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 12267.633656965738,
+      "Airbnb": 9232.053685711362
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 18272.326768502055,
+      "Airbnb": -63354.50128422316
+    }
+  ],
+  "27": [
+    {
+      "borough": "Bronx",
+      "Forecast": 17837.239852759532,
+      "Airbnb": 39611.7039569364
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 35876.50832578213,
+      "Airbnb": -158415.66559555018
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 13861.497588241979,
+      "Airbnb": 32860.02410304571
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 12739.46572069519,
+      "Airbnb": 9704.557098717838
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 18975.108567290594,
+      "Airbnb": -64606.600964473524
+    }
+  ],
+  "28": [
+    {
+      "borough": "Bronx",
+      "Forecast": 18497.8783658247,
+      "Airbnb": 40619.91596012319
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 37205.26789340368,
+      "Airbnb": -162293.2480554164
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 14374.886387806497,
+      "Airbnb": 34226.39594558063
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 13211.29778442464,
+      "Airbnb": 9741.597074794345
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 19677.890366079137,
+      "Airbnb": -65464.42991753034
+    }
+  ],
+  "29": [
+    {
+      "borough": "Bronx",
+      "Forecast": 19158.51687888987,
+      "Airbnb": 41339.87158148352
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 38534.027461025245,
+      "Airbnb": -168152.38840969425
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 14888.275187371017,
+      "Airbnb": 35879.453330463286
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 13683.12984815409,
+      "Airbnb": 9474.187774157463
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 20380.67216486768,
+      "Airbnb": -67045.05960972632
+    }
+  ],
+  "30": [
+    {
+      "borough": "Bronx",
+      "Forecast": 19819.155391955035,
+      "Airbnb": 42589.73521794592
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 39862.78702864681,
+      "Airbnb": -174941.87789516378
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 15401.663986935535,
+      "Airbnb": 37336.71143563538
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 14154.961911883545,
+      "Airbnb": 8942.9685073136
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 21083.453963656215,
+      "Airbnb": -69463.05598615401
+    }
+  ],
+  "31": [
+    {
+      "borough": "Bronx",
+      "Forecast": 20479.793905020204,
+      "Airbnb": 44729.69187506059
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 41191.54659626837,
+      "Airbnb": -181241.4918264356
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 15915.05278650005,
+      "Airbnb": 38648.75173796972
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 14626.793975612996,
+      "Airbnb": 8390.399926116726
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 21786.235762444758,
+      "Airbnb": -72500.79885992255
+    }
+  ],
+  "32": [
+    {
+      "borough": "Bronx",
+      "Forecast": 21140.432418085376,
+      "Airbnb": 46354.788325627
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 42520.30616388993,
+      "Airbnb": -188319.98223372494
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 16428.44158606457,
+      "Airbnb": 39586.39359015673
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 15098.626039342445,
+      "Airbnb": 7747.5490780823775
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 22489.017561233297,
+      "Airbnb": -75836.4633134938
+    }
+  ],
+  "33": [
+    {
+      "borough": "Bronx",
+      "Forecast": 21801.07093115054,
+      "Airbnb": 46714.79120504666
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 43849.065731511495,
+      "Airbnb": -196012.34596283655
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 16941.83038562909,
+      "Airbnb": 40317.5473027077
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 15570.4581030719,
+      "Airbnb": 7508.4157450571465
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 23191.799360021836,
+      "Airbnb": -78633.36350433351
+    }
+  ],
+  "34": [
+    {
+      "borough": "Bronx",
+      "Forecast": 22461.70944421571,
+      "Airbnb": 47037.607886214006
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 45177.825299133045,
+      "Airbnb": -202417.00358303956
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 17455.219185193604,
+      "Airbnb": 40732.189077496645
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 16042.29016680135,
+      "Airbnb": 7664.060256425332
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 23894.58115881038,
+      "Airbnb": -80432.50583723772
+    }
+  ],
+  "35": [
+    {
+      "borough": "Bronx",
+      "Forecast": 23122.34795728088,
+      "Airbnb": 48560.1767197185
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 46506.584866754616,
+      "Airbnb": -206832.02667702857
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 17968.607984758128,
+      "Airbnb": 41433.55090857928
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 16514.1222305308,
+      "Airbnb": 8565.531382756686
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 24597.362957598918,
+      "Airbnb": -81579.85741894667
+    }
+  ],
+  "36": [
+    {
+      "borough": "Bronx",
+      "Forecast": 23782.986470346048,
+      "Airbnb": 50838.794061139124
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 47835.34443437616,
+      "Airbnb": -211367.03859870334
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 18481.996784322644,
+      "Airbnb": 42746.940522676356
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 16985.954294260253,
+      "Airbnb": 9632.11444820717
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 25300.144756387464,
+      "Airbnb": -83815.29986783543
+    }
+  ],
+  "37": [
+    {
+      "borough": "Bronx",
+      "Forecast": 24443.624983411217,
+      "Airbnb": 52877.065499917764
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 49164.10400199773,
+      "Airbnb": -216024.13162251687
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 18995.385583887157,
+      "Airbnb": 44228.417266761324
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 17457.786357989702,
+      "Airbnb": 10653.675788444647
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 26002.926555176004,
+      "Airbnb": -86008.77597453789
+    }
+  ],
+  "38": [
+    {
+      "borough": "Bronx",
+      "Forecast": 25104.263496476375,
+      "Airbnb": 54265.261782750924
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 50492.863569619294,
+      "Airbnb": -220854.54940995833
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 19508.774383451677,
+      "Airbnb": 45076.86613668755
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 17929.61842171916,
+      "Airbnb": 11131.005365359379
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 26705.708353964546,
+      "Airbnb": -87992.06625952802
+    }
+  ],
+  "39": [
+    {
+      "borough": "Bronx",
+      "Forecast": 25764.90200954155,
+      "Airbnb": 55489.70366838933
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 51821.62313724085,
+      "Airbnb": -224641.03861699934
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 20022.163183016197,
+      "Airbnb": 45968.950596086775
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 18401.450485448604,
+      "Airbnb": 11524.565706360878
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 27408.490152753086,
+      "Airbnb": -89117.67246829062
+    }
+  ],
+  "40": [
+    {
+      "borough": "Bronx",
+      "Forecast": 26425.540522606716,
+      "Airbnb": 56518.51491187236
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 53150.38270486241,
+      "Airbnb": -228350.1646074441
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 20535.551982580713,
+      "Airbnb": 47307.82408390593
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 18873.28254917806,
+      "Airbnb": 11511.130730451196
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 28111.27195154162,
+      "Airbnb": -89837.76344072762
+    }
+  ],
+  "41": [
+    {
+      "borough": "Bronx",
+      "Forecast": 27086.179035671878,
+      "Airbnb": 57244.47932125367
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 54479.14227248398,
+      "Airbnb": -233875.73546475108
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 21048.940782145226,
+      "Airbnb": 48947.402370892254
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 19345.11461290751,
+      "Airbnb": 11205.111221717778
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 28814.053750330168,
+      "Airbnb": -91251.14640014393
+    }
+  ],
+  "42": [
+    {
+      "borough": "Bronx",
+      "Forecast": 27746.817548737054,
+      "Airbnb": 58456.888561066684
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 55807.90184010553,
+      "Airbnb": -240270.72675535505
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 21562.329581709746,
+      "Airbnb": 50386.89282474832
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 19816.946676636962,
+      "Airbnb": 10635.53636494572
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 29516.83554911871,
+      "Airbnb": -93468.08854322479
+    }
+  ],
+  "43": [
+    {
+      "borough": "Bronx",
+      "Forecast": 28407.45606180223,
+      "Airbnb": 60544.46736486946
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 57136.6614077271,
+      "Airbnb": -246189.12010834005
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 22075.718381274266,
+      "Airbnb": 51673.60434840003
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 20288.778740366415,
+      "Airbnb": 10042.882878391056
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 30219.61734790724,
+      "Airbnb": -96294.55632523469
+    }
+  ],
+  "44": [
+    {
+      "borough": "Bronx",
+      "Forecast": 29068.09457486738,
+      "Airbnb": 62149.356853320875
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 58465.42097534865,
+      "Airbnb": -252795.863553762
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 22589.10718083878,
+      "Airbnb": 52570.16165491607
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 20760.610804095864,
+      "Airbnb": 9345.325675454153
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 30922.39914669579,
+      "Airbnb": -99431.23681559965
+    }
+  ],
+  "45": [
+    {
+      "borough": "Bronx",
+      "Forecast": 29728.733087932564,
+      "Airbnb": 62538.42784831412
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 59794.18054297022,
+      "Airbnb": -259971.56996606942
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 23102.4959804033,
+      "Airbnb": 53253.92004815773
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 21232.44286782532,
+      "Airbnb": 9037.042794825438
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 31625.180945484324,
+      "Airbnb": -102069.21759191282
+    }
+  ],
+  "46": [
+    {
+      "borough": "Bronx",
+      "Forecast": 30389.37160099773,
+      "Airbnb": 62883.36843024674
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 61122.94011059178,
+      "Airbnb": -266024.7747926037
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 23615.88477996782,
+      "Airbnb": 53610.24153658953
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 21704.274931554774,
+      "Airbnb": 9108.216223930194
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 32327.962744272863,
+      "Airbnb": -103755.0470090104
+    }
+  ],
+  "47": [
+    {
+      "borough": "Bronx",
+      "Forecast": 31050.010114062883,
+      "Airbnb": 64382.08488866224
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 62451.699678213336,
+      "Airbnb": -270339.5681385563
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 24129.273579532335,
+      "Airbnb": 54256.74720039403
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 22176.106995284215,
+      "Airbnb": 9907.148099398402
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 33030.74454306141,
+      "Airbnb": -104816.96904392303
+    }
+  ],
+  "48": [
+    {
+      "borough": "Bronx",
+      "Forecast": 31710.64862712806,
+      "Airbnb": 66617.98348196877
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 63780.4592458349,
+      "Airbnb": -274817.82876653975
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 24642.662379096855,
+      "Airbnb": 55534.22047661125
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 22647.939059013668,
+      "Airbnb": 10857.197376796132
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 33733.52634184995,
+      "Airbnb": -106985.35600786704
+    }
+  ],
+  "49": [
+    {
+      "borough": "Bronx",
+      "Forecast": 32371.287140193235,
+      "Airbnb": 68627.30443287519
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 65109.21881345645,
+      "Airbnb": -279391.90164869215
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 25156.05117866137,
+      "Airbnb": 56992.59412253073
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 23119.771122743125,
+      "Airbnb": 11754.262738159097
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 34436.30814063848,
+      "Airbnb": -109125.72051120998
+    }
+  ],
+  "50": [
+    {
+      "borough": "Bronx",
+      "Forecast": 33031.92565325839,
+      "Airbnb": 69998.71365220049
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 66437.97838107802,
+      "Airbnb": -284073.1831057131
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 25669.439978225888,
+      "Airbnb": 57804.33163359197
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 23591.603186472574,
+      "Airbnb": 12100.850740522641
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 35139.08993942702,
+      "Airbnb": -111070.79956955147
+    }
+  ],
+  "51": [
+    {
+      "borough": "Bronx",
+      "Forecast": 33692.564166323566,
+      "Airbnb": 71224.16473612635
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 67766.73794869958,
+      "Airbnb": -287716.52488932846
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 26182.828777790404,
+      "Airbnb": 58658.592037420734
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 24063.435250202027,
+      "Airbnb": 12378.249069808697
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 35841.87173821557,
+      "Airbnb": -112182.73413666824
+    }
+  ],
+  "52": [
+    {
+      "borough": "Bronx",
+      "Forecast": 34353.20267938873,
+      "Airbnb": 72273.87959889277
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 69095.49751632113,
+      "Airbnb": -291220.1643556976
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 26696.217577354928,
+      "Airbnb": 59973.18347139089
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 24535.267313931476,
+      "Airbnb": 12276.065221489873
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 36544.65353700411,
+      "Airbnb": -112898.50351984611
+    }
+  ],
+  "53": [
+    {
+      "borough": "Bronx",
+      "Forecast": 35013.841192453896,
+      "Airbnb": 73006.22333395646
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 70424.25708394269,
+      "Airbnb": -296381.7696705162
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 27209.606376919444,
+      "Airbnb": 61602.05416555937
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 25007.099377660925,
+      "Airbnb": 11890.668934886045
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 37247.43533579265,
+      "Airbnb": -114312.42359871686
+    }
+  ],
+  "54": [
+    {
+      "borough": "Bronx",
+      "Forecast": 35674.479705519065,
+      "Airbnb": 74182.47944760027
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 71753.01665156426,
+      "Airbnb": -302352.1350213717
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 27722.995176483957,
+      "Airbnb": 63026.48334111191
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 25478.93144139038,
+      "Airbnb": 11237.934231856103
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 37950.21713458119,
+      "Airbnb": -116546.4485432609
+    }
+  ],
+  "55": [
+    {
+      "borough": "Bronx",
+      "Forecast": 36335.11821858424,
+      "Airbnb": 76219.80664759643
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 73081.77621918583,
+      "Airbnb": -307857.7371173555
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 28236.383976048477,
+      "Airbnb": 64290.67494479135
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 25950.76350511984,
+      "Airbnb": 10555.101608391746
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 38652.99893336974,
+      "Airbnb": -119456.85793340887
+    }
+  ],
+  "56": [
+    {
+      "borough": "Bronx",
+      "Forecast": 36995.7567316494,
+      "Airbnb": 77806.04145054093
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 74410.53578680736,
+      "Airbnb": -313964.4610686407
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 28749.772775612993,
+      "Airbnb": 65149.16872878391
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 26422.59556884928,
+      "Airbnb": 9746.168726921247
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 39355.78073215827,
+      "Airbnb": -122842.28454095118
+    }
+  ],
+  "57": [
+    {
+      "borough": "Bronx",
+      "Forecast": 37656.39524471458,
+      "Airbnb": 78224.51296911099
+    },
+    {
+      "borough": "Manhattan",
+      "Forecast": 75739.29535442892,
+      "Airbnb": -320594.73552134435
+    },
+    {
+      "borough": "Staten Island",
+      "Forecast": 29263.161575177513,
+      "Airbnb": 65788.50235034144
+    },
+    {
+      "borough": "Queens",
+      "Forecast": 26894.427632578732,
+      "Airbnb": 9303.24009317705
+    },
+    {
+      "borough": "Brooklyn",
+      "Forecast": 40058.562530946816,
+      "Airbnb": -126359.12986964402
+    }
+  ]
+}
